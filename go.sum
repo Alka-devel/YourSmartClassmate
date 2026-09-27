@@ -1,0 +1,4 @@
+github.com/maxigo-bot/maxigo-bot v0.6.0 h1:3d8Lc4sfdFGEtmXTYF36zVunYBHsYibXrm2vo0q/VZ0=
+github.com/maxigo-bot/maxigo-bot v0.6.0/go.mod h1:ZpD7l5avepTcRaqBfqT/l14OmiVKo7MmkpXvcjkaEH8=
+github.com/maxigo-bot/maxigo-client v0.7.0 h1:5MChS8d2OcLuV96moP3c4vyTPBQAaBdaSfjI1T+BmI8=
+github.com/maxigo-bot/maxigo-client v0.7.0/go.mod h1:a1VaOAAIgrQFi2jo/LT81g7cthXmTZvUHhVUnVObT3c=
