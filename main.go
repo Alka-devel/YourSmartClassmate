@@ -42,6 +42,7 @@ func initComs(bot *mapi.Bot) {
 	//
 	bot.Pre(waiters.Middleware)
 	// 
+	callback(bot)
 	startCom(bot)
 }
 

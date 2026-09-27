@@ -13,13 +13,6 @@ import (
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
 )
-type Group int8
-
-const (
-	Empty Group = iota
-	SocEco
-	InfTec
-)
 
 var (
 	regularFont *opentype.Font
