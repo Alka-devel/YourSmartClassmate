@@ -4,7 +4,7 @@ import (
 	"flag"
 	"log"
 
-	max "github.com/maxigo-bot/maxigo-bot"
+	mapi "github.com/maxigo-bot/maxigo-bot"
 )
 
 var (
@@ -19,7 +19,7 @@ var (
 )
 
 func main() {
-	flag.StringVar(&token, "token", token, "MAX Bot api token")
+	flag.StringVar(&token, "token", token, "mapi Bot api token")
 	flag.StringVar(&ownID, "owner-id", ownID, "ID for logging/administrer")
 	flag.StringVar(&path, "table-path", path, "path to table with data")
 	flag.Parse()
@@ -27,23 +27,26 @@ func main() {
 	if token == "" || weekErr != nil {
 		log.Fatal("Где-т ошибка")
 	}
-	bot, err := max.New(token, max.WithLongPolling(30))
+	bot, err := mapi.New(token, mapi.WithLongPolling(30))
 	if err != nil {
 		log.Fatalf("не удалось инициализировать бота: %v", err)
 	}
 
-	bot.OnError = func(err error, c max.Context) {
+	bot.OnError = func(err error, c mapi.Context) {
 		log.Printf("ошибка обработчика: %v", err)
 	}
 	initComs(bot)
 	bot.Start()
 }
-func initComs(bot *max.Bot) {
+func initComs(bot *mapi.Bot) {
+	//
+	bot.Pre(waiters.Middleware)
+	// 
 	startCom(bot)
 }
 
-func startCom(bot *max.Bot) {
-	bot.Handle("/start", func(c max.Context) error {
+func startCom(bot *mapi.Bot) {
+	bot.Handle("/start", func(c mapi.Context) error {
 		name := "друг"
 		if sender := c.Sender(); sender != nil && sender.FirstName != "" {
 			name = sender.FirstName
